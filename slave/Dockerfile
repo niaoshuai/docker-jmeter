@@ -4,4 +4,4 @@ MAINTAINER niaoshuai <niao.shuai123@163.com>
 
 EXPOSE 1099
 
-ENTRYPOINT ["jmeter-server"]
+ENTRYPOINT ["jmeter.sh","-s"]
