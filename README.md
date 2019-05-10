@@ -11,7 +11,7 @@ Use these (jmeter) parameters on master node for slaves drive Gatling:
 
 ##### Sample Usage for Slave (cirit/jmeter:slave):
 ```sh
-$ docker run -d -P --name slave1 -v /Users/cagdas/docker_mnt/:/jmeter_log cirit/jmeter:slave -j /jmeter_log/slave1.log
+$ docker run -d -P --name slave1 -v /home/niaoshuai/docker_mnt/:/jmeter_log registry.cn-beijing.aliyuncs.com/niao-jmeter/jmeter-slave:1.0.0 -j /jmeter_log/slave1.log
 ```
 ##### Sample Usage for Master (cirit/jmeter:master):
 ```sh
