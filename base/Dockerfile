@@ -2,7 +2,7 @@ FROM openjdk:8u212-jre-stretch
 
 MAINTAINER niaoshuai <niao.shuai123@163.com>
 
-ENV JMETER_VERSION=5.1.0
+ENV JMETER_VERSION=5.1
 ENV JMETER_HOME=/usr/local/apache-jmeter-${JMETER_VERSION}
 ENV PATH=${JMETER_HOME}/bin:${PATH}
 
