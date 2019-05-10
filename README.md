@@ -15,7 +15,7 @@ $ docker run -d -P --name slave1 -v /home/niaoshuai/docker_mnt/:/jmeter_log regi
 ```
 ##### Sample Usage for Master (cirit/jmeter:master):
 ```sh
-$ docker run -d -P --name master -v /Users/cagdas/docker_mnt/:/jmeter_log --link slave1 --link slave2 --link slave3 cirit/jmeter:master -t /jmeter_log/test.jmx -R slave1,slave2,slave3 -j /jmeter_log/master.log -l /jmeter_log/result.jtl -X
+$ docker run -d -P --name master -v /home/niaoshuai/docker_mnt/:/jmeter_log --link slave1 registry.cn-beijing.aliyuncs.com/niao-jmeter/jmeter-master:1.0.0 -t /jmeter_log/test.jmx -R slave1 -j /jmeter_log/master.log -l /jmeter_log/result.csv -X
 ```
 
 ##### Sample Usage for Slave driving Gatling (cirit/jmeter:slave_running_gatling):
