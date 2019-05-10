@@ -18,6 +18,11 @@ $ docker run -d -P --name slave1 -v /home/niaoshuai/docker_mnt/:/jmeter_log regi
 $ docker run -d -P --name master -v /home/niaoshuai/docker_mnt/:/jmeter_log --link slave1 registry.cn-beijing.aliyuncs.com/niao-jmeter/jmeter-master:1.0.0 -t /jmeter_log/test.jmx -R slave1 -j /jmeter_log/master.log -l /jmeter_log/result.csv -X
 ```
 
+##### Docker Compose
+```sh
+$ docker-compose -f simple.yaml up
+```
+
 ##### Sample Usage for Slave driving Gatling (cirit/jmeter:slave_running_gatling):
 ```sh
 $ docker run -d -P --name gslave1 -v /Users/cagdas/docker_mnt/:/jmeter_log cirit/jmeter:slave_running_gatling -j /jmeter_log/gslave1.log
