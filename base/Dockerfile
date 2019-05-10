@@ -25,3 +25,6 @@ RUN rm -rf apache-jmeter-${JMETER_VERSION}.tgz \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /usr/local/apache-jmeter-${JMETER_VERSION}
+
+# server.rmi.ssl.disable=false
+RUN sed -i 's/^# server.rmi.ssl.disable=false/server.rmi.ssl.disable=true/' bin/jmeter.properties
