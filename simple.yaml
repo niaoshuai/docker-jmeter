@@ -3,10 +3,11 @@ services:
   jmeter-slave1:
     image: registry.cn-beijing.aliyuncs.com/niao-jmeter/jmeter-slave:1.0.0
     container_name: jmeter-slave1
-    entrypoint:
-    - jmeter.sh
-    - -s
-    - -j /jmeter_log/slave1.log
+    # entrypoint:
+    # - jmeter.sh
+    # - -s
+    # - -j /jmeter_log/slave1.log
+    command: -j /jmeter_log/slave1.log
     volumes:
     - /home/niaoshuai/docker_mnt/:/jmeter_log
   jmeter-master:
@@ -14,20 +15,21 @@ services:
     container_name: jmeter-master
     links:
     - jmeter-slave1
-    entrypoint:
-    - jmeter.sh
-    - -n 
-    - -Jclient.tries=3
-    - -Jclient.retries_delay=10000
-    - -Jclient.continue_on_fail=true
-    - -t 
-    - /jmeter_log/test.jmx
-    - -R 
-    - jmeter-slave1
-    - -j 
-    - /jmeter_log/master.log
-    - -l 
-    - /jmeter_log/result.csv
-    - -X
+    command: -t /jmeter_log/test.jmx -R jmeter-slave1 -j /jmeter_log/master.log -l /jmeter_log/result.csv -X
+    # entrypoint:
+    # - jmeter.sh
+    # - -n 
+    # - -Jclient.tries=3
+    # - -Jclient.retries_delay=10000
+    # - -Jclient.continue_on_fail=true
+    # - -t 
+    # - /jmeter_log/test.jmx
+    # - -R 
+    # - jmeter-slave1
+    # - -j 
+    # - /jmeter_log/master.log
+    # - -l 
+    # - /jmeter_log/result.csv
+    # - -X
     volumes: 
     - /home/niaoshuai/docker_mnt/:/jmeter_log
