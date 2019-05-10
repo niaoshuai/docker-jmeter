@@ -1,15 +1,15 @@
-FROM cirit/oracle-java:latest
+FROM openjdk:8u212-jre-stretch
 
-MAINTAINER Cagdas Cirit <cagdascirit@gmail.com>
+MAINTAINER niaoshuai <niao.shuai123@163.com>
 
-ENV JMETER_VERSION=2.13
+ENV JMETER_VERSION=5.1.0
 ENV JMETER_HOME=/usr/local/apache-jmeter-${JMETER_VERSION}
 ENV PATH=${JMETER_HOME}/bin:${PATH}
 
 RUN apt-get -y update && \
 	apt-get -y install wget 
 
-RUN wget http://www.eu.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz && \
+RUN wget http://mirrors.tuna.tsinghua.edu.cn/apache//jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz && \
 	tar -xzf apache-jmeter-${JMETER_VERSION}.tgz -C /usr/local/
 
 RUN rm -rf apache-jmeter-${JMETER_VERSION}.tgz \
