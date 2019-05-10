@@ -27,4 +27,4 @@ RUN rm -rf apache-jmeter-${JMETER_VERSION}.tgz \
 WORKDIR /usr/local/apache-jmeter-${JMETER_VERSION}
 
 # server.rmi.ssl.disable=false
-RUN sed -i 's/^# server.rmi.ssl.disable=false/server.rmi.ssl.disable=true/' bin/jmeter.properties
+RUN sed -i 's/^#server.rmi.ssl.disable=false/server.rmi.ssl.disable=true/' bin/jmeter.properties
