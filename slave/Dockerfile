@@ -1,7 +1,7 @@
-FROM cirit/jmeter:base
+FROM registry.cn-beijing.aliyuncs.com/niao-jmeter/jmeter-base:1.0.0
 
-MAINTAINER Cagdas Cirit <cagdascirit@gmail.com>
+MAINTAINER niaoshuai <niao.shuai123@163.com>
 
-EXPOSE 1099 60000
+EXPOSE 1099
 
-ENTRYPOINT ["jmeter.sh","-s","-Jserver.rmi.localport=60000"]
+ENTRYPOINT ["jmeter-server"]
