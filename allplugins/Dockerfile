@@ -1,28 +1,17 @@
-FROM cirit/jmeter:base
+FROM registry.cn-beijing.aliyuncs.com/niao-jmeter/jmeter-base:1.0.0
 
-MAINTAINER Cagdas Cirit <cagdascirit@gmail.com>
-
-ENV PLUGINS_VERSION=1.3.0
+MAINTAINER niaoshuai <niao.shuai123@163.com>
 
 RUN apt-get -y update && \
 	apt-get -y install \
 	wget \
 	unzip 
 
-RUN wget http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-${PLUGINS_VERSION}.zip \
-	http://jmeter-plugins.org/downloads/file/JMeterPlugins-Extras-${PLUGINS_VERSION}.zip \
-	http://jmeter-plugins.org/downloads/file/JMeterPlugins-ExtrasLibs-${PLUGINS_VERSION}.zip \
-	http://jmeter-plugins.org/downloads/file/JMeterPlugins-WebDriver-${PLUGINS_VERSION}.zip \
-	http://jmeter-plugins.org/downloads/file/JMeterPlugins-Hadoop-${PLUGINS_VERSION}.zip && \
-	unzip -o JMeterPlugins-Standard-${PLUGINS_VERSION}.zip -d ${JMETER_HOME} && \
-	unzip -o JMeterPlugins-Extras-${PLUGINS_VERSION}.zip -d ${JMETER_HOME} && \
-	unzip -o JMeterPlugins-ExtrasLibs-${PLUGINS_VERSION}.zip -d ${JMETER_HOME} && \
-	unzip -o JMeterPlugins-WebDriver-${PLUGINS_VERSION}.zip -d ${JMETER_HOME} && \
-	unzip -o JMeterPlugins-Hadoop-${PLUGINS_VERSION}.zip -d ${JMETER_HOME}
+# Wget
+RUN wget -P  ${JMETER_HOME}/lib/ext https://github.com/niaoshuai/docker-jmeter/raw/master/allplugins/JMeter-InfluxDB-Writer-plugin-1.2.jar \
+    wget -P  ${JMETER_HOME}/lib/ext https://github.com/niaoshuai/docker-jmeter/raw/master/allplugins/jmeter-plugins-casutg-2.8.jar 
 
-RUN rm -rf *.zip \
-			${JMETER_HOME}/lib/ext/*.bat && \
-	apt-get -y remove wget unzip && \
+RUN apt-get -y remove wget unzip && \
 	apt-get -y --purge autoremove && \
 	apt-get -y clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
