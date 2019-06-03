@@ -6,10 +6,9 @@ RUN apt-get -y update && \
 	apt-get -y install \
 	wget \
 	unzip 
-
-# Wget
+	
 RUN wget -P  ${JMETER_HOME}/lib/ext https://github.com/niaoshuai/docker-jmeter/raw/master/allplugins/JMeter-InfluxDB-Writer-plugin-1.2.jar \
-    wget -P  ${JMETER_HOME}/lib/ext https://github.com/niaoshuai/docker-jmeter/raw/master/allplugins/jmeter-plugins-casutg-2.8.jar 
+    wget -P  ${JMETER_HOME}/lib/ext https://github.com/niaoshuai/docker-jmeter/raw/master/allplugins/jmeter-plugins-casutg-2.8.jar
 
 RUN apt-get -y remove wget unzip && \
 	apt-get -y --purge autoremove && \
